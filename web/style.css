@@ -708,7 +708,7 @@ a.cc-who:hover { color: var(--accent-fg); }
 
 /* ---------- right-side inspector ---------- */
 #right-side {
-  width: 384px; flex: none; background: var(--bg2); border-left: 1px solid var(--line);
+  width: 440px; flex: none; background: var(--bg2); border-left: 1px solid var(--line);
   display: flex; flex-direction: column; overflow: hidden;
 }
 body.right-hidden #right-side, body.right-hidden #right-resizer { display: none; }
