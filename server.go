@@ -2453,10 +2453,6 @@ func (s *Server) handleLocalComments(w http.ResponseWriter, r *http.Request) {
 }
 
 func (s *Server) handleLocalCommentDelete(w http.ResponseWriter, r *http.Request) {
-	if r.Method != http.MethodDelete {
-		fail(w, http.StatusMethodNotAllowed, "method not allowed")
-		return
-	}
 	if !localPost(w, r) {
 		return
 	}

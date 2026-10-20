@@ -104,7 +104,7 @@ async function saveComment(sel, body) {
 async function deleteComment(id) {
   try {
     const base = document.baseURI || (location.origin + '/');
-    await fetch(new URL('api/local-comments/' + id, base), { method: 'DELETE' });
+    await fetch(new URL('api/local-comments/' + id, base), { method: 'POST' });
     localNotes = localNotes.filter(c => c.id !== id);
     renderGutterBadges();
     renderPanel();
@@ -117,7 +117,7 @@ async function clearAllComments() {
   if (!localNotes.length) return;
   const base = document.baseURI || (location.origin + '/');
   for (const c of [...localNotes]) {
-    try { await fetch(new URL('api/local-comments/' + c.id, base), { method: 'DELETE' }); } catch {}
+    try { await fetch(new URL('api/local-comments/' + c.id, base), { method: 'POST' }); } catch {}
   }
   localNotes = [];
   renderGutterBadges();
