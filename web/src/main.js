@@ -32,6 +32,7 @@ import { initPRScope } from './prscope.js';
 import { initEditView } from './editview.js';
 import { initNewItem } from './newitem.js';
 import { initTips, startTipsAsync } from './tips.js';
+import { initLocalComments } from './localcomments.js';
 
 // Initialize all subsystems
 initRenderer();
@@ -63,6 +64,7 @@ initSettings();
 initVim();
 initImageViewer();
 initLineComment();
+initLocalComments();
 initUnpushed();
 initPRScope();
 
