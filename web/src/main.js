@@ -33,6 +33,7 @@ import { initEditView } from './editview.js';
 import { initNewItem } from './newitem.js';
 import { initTips, startTipsAsync } from './tips.js';
 import { initLocalComments } from './localcomments.js';
+import { restoreSession, initSessionSync } from './sessionsync.js';
 
 // Initialize all subsystems
 initRenderer();
@@ -65,6 +66,7 @@ initVim();
 initImageViewer();
 initLineComment();
 initLocalComments();
+initSessionSync();
 initUnpushed();
 initPRScope();
 
@@ -167,7 +169,9 @@ initPRScope();
       window.history.replaceState({}, '', cleanUrl);
     } catch {}
   } else {
-    if (hasGitChanges) await selectChangedFileTab();
+    // Restore previous session tabs, then overlay git changes if any
+    const restored = await restoreSession();
+    if (hasGitChanges && !restored) await selectChangedFileTab();
   }
 
   if (inGitMode()) {
