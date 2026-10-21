@@ -1,90 +1,92 @@
-/* VS Code Dark+: Colorful syntax theme matching VS Code's default dark.
-   Tuned for Rust, Java, TypeScript, and AIDL.
-   Token reference: docs/internals/styling-and-themes.md. */
+/* VS Code Dark+: Colorful syntax theme for Rust, Java, TypeScript, AIDL.
+   54% of visible text is unclassed (--fg), so --fg must be SOFT and syntax
+   tokens must be VIVID to create contrast. */
 :root[data-theme="vscode-dark"] {
   --theme-name: "VS Code Dark+";
   color-scheme: dark;
 
   /* surfaces */
   --bg: #1e1e1e; --bg2: #252526; --bg3: #2d2d2d; --bg4: #3c3c3c;
-  /* text */
-  --fg: #d4d4d4; --dim: #858585; --faint: #505050;
+
+  /* text: --fg is intentionally SOFT so colored tokens stand out */
+  --fg: #abb2bf; --dim: #7f848e; --faint: #4b5263;
+
   /* borders and accent */
-  --line: #333333; --accent: #007acc; --accent-fg: #3794ff; --on-accent: #ffffff;
+  --line: #333333; --accent: #007acc; --accent-fg: #61afef; --on-accent: #ffffff;
+
   /* selection, search, current line */
-  --sel: #264f78; --mark: rgba(234, 92, 0, 0.33); --mark-active: #ea5c00; --cur: #282828;
+  --sel: #264f78; --mark: rgba(229, 192, 123, 0.25); --mark-active: #e5c07b; --cur: #2c313c;
+
   /* elevation */
   --shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
 
-  /*
-   * SYNTAX TOKENS — mapped to Chroma CSS classes
-   *
-   * Most frequent in Rust/Java/TS (from real file analysis):
-   *   p (punctuation)  ~300/file — must be dim, NOT white
-   *   k (keywords)     ~100/file — the main color anchor
-   *   o (operators)     ~100/file — needs its own color
-   *   nb (built-ins)     ~75/file — Ok, Err, Result, self, console
-   *   nf (functions)     ~25/file — function/macro names
-   *   nc (classes)       ~20/file — struct/class names
-   *   s (strings)        ~15/file — string literals
-   *   c (comments)       ~10/file — comments
-   */
+  /* [k] keywords: use, fn, let, match, impl, if, return, pub, class, interface
+     PINK — the primary color anchor, high saturation */
+  --k: #c678dd;
 
-  /* [k] keywords: use, fn, let, match, impl, if, else, return, pub, const, class, interface */
-  --k: #c586c0;
+  /* [kt] type keywords: i32, bool, str (primitive types)
+     TEAL — stands out from pink keywords */
+  --kt: #56b6c2;
 
-  /* [kt] type keywords: i32, bool, str, int, String (when used as primitive type) */
-  --kt: #4ec9b0;
+  /* [nf] function/macro names: on_start, info!, error!, render(), getName()
+     BRIGHT BLUE — must pop since functions are important landmarks */
+  --nf: #61afef;
 
-  /* [nf] function/method/macro names: on_start, info!, error!, render(), getName() */
-  --nf: #dcdcaa;
+  /* [nc] class/struct/trait names: NotificationService, JobHandler
+     GOLDEN YELLOW — warm, distinct from blue functions */
+  --nc: #e5c07b;
 
-  /* [nc] class/struct/trait names: NotificationService, JobHandler, Component */
-  --nc: #4ec9b0;
+  /* [nb] built-ins: self, Ok, Err, Result, String, Vec, Arc, console
+     BRIGHT BLUE — same family as functions (these are standard lib) */
+  --nb: #61afef;
 
-  /* [nb] built-in names: self, Ok, Err, Result, String, Vec, Option, console, Math */
-  --nb: #569cd6;
+  /* [nv] variables and parameters
+     SOFT RED — subtle but distinct from white text */
+  --nv: #e06c75;
 
-  /* [nv] variables and parameters */
-  --nv: #9cdcfe;
+  /* [no] constants: PACKAGE_NAME, MAX_RETRIES, SERVICE_TAG
+     BRIGHT CYAN — screaming case deserves a bright color */
+  --no: #56b6c2;
 
-  /* [no] constants: PACKAGE_NAME, MAX_RETRIES, SCREAMING_CASE */
-  --no: #4fc1ff;
+  /* [na] attributes: #[derive], #[impl_interface], @Override
+     GOLDEN YELLOW */
+  --na: #e5c07b;
 
-  /* [na] attributes: #[derive], @Override, @Component */
-  --na: #9cdcfe;
+  /* [nt] HTML/XML/AIDL tags
+     RED — standard for markup */
+  --nt: #e06c75;
 
-  /* [nt] HTML/XML/AIDL tags */
-  --nt: #569cd6;
+  /* [nd] decorators
+     GOLDEN YELLOW */
+  --nd: #e5c07b;
 
-  /* [nd] decorators */
-  --nd: #dcdcaa;
+  /* [np] properties */
+  --np: #e06c75;
 
-  /* [np] properties: obj.property */
-  --np: #9cdcfe;
+  /* [s] strings: "hello", 'world', `template`
+     GREEN — the universal string color */
+  --s: #98c379;
 
-  /* [s] strings: "hello", 'world', `template` */
-  --s: #ce9178;
+  /* [m] numbers: 42, 3.14, 0xff
+     ORANGE */
+  --m: #d19a66;
 
-  /* [m] numbers: 42, 3.14, 0xff */
-  --m: #b5cea8;
+  /* [o] operators: =>, =, ::, &, | — subtle but visible */
+  --o: #abb2bf;
 
-  /* [o] operators: =>, =, ::, &, |, <, >, +, -, ! — light blue, distinct from text */
-  --o: #d4d4d4;
+  /* [p] punctuation: (), {}, [], ;, , — VERY DIM, must not compete */
+  --p: #5c6370;
 
-  /* [p] punctuation: (), {}, [], ;, , — MUST be dim so it doesn't dominate */
-  --p: #6e6e6e;
+  /* [c] comments — italic green, classic */
+  --c: #7f848e;
 
-  /* [c] comments: // single line, /* multi */ */
-  --c: #6a9955;
-
-  /* [cp] control flow / preprocessor: use, import, from, mod, #include */
-  --cp: #c586c0;
+  /* [cp] control flow / preprocessor: use, import, from, mod */
+  --cp: #c678dd;
 
   /* [err] errors */
-  --err: #f44747;
+  --err: #e06c75;
 
   /* diffs */
-  --gi: #b5cea8; --gd: #f44747;
-  --gi-bg: rgba(181, 206, 168, 0.15); --gd-bg: rgba(244, 71, 71, 0.15);
+  --gi: #98c379; --gd: #e06c75;
+  --gi-bg: rgba(152, 195, 121, 0.14); --gd-bg: rgba(224, 108, 117, 0.14);
 }
