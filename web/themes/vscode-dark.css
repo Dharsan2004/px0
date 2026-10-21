@@ -1,40 +1,78 @@
-/* VS Code Dark+: The default Visual Studio Code dark theme. Token reference: docs/internals/styling-and-themes.md. */
+/* VS Code Dark+: Faithful recreation of Visual Studio Code's default dark theme.
+   Colorful syntax with distinct hues for every token type.
+   Token reference: docs/internals/styling-and-themes.md. */
 :root[data-theme="vscode-dark"] {
   --theme-name: "VS Code Dark+";
   color-scheme: dark;
 
-  /* surfaces, from the editor out to raised hover states */
+  /* surfaces */
   --bg: #1e1e1e; --bg2: #252526; --bg3: #2d2d2d; --bg4: #3c3c3c;
-  /* text: primary, secondary, tertiary */
+  /* text */
   --fg: #d4d4d4; --dim: #808080; --faint: #585858;
   /* borders and accent */
   --line: #333333; --accent: #007acc; --accent-fg: #3794ff; --on-accent: #ffffff;
-  /* selection, search matches, current line */
+  /* selection, search, current line */
   --sel: #264f78; --mark: rgba(234, 92, 0, 0.33); --mark-active: #ea5c00; --cur: #282828;
   /* elevation */
   --shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
 
-  /* syntax — matching VS Code's Dark+ token colors */
-  --k: #569cd6;  /* keywords: if, return, const, function */
-  --kt: #4ec9b0; /* types: class names, type annotations */
-  --nf: #dcdcaa; /* function names */
-  --nc: #4ec9b0; /* class names */
-  --nb: #4fc1ff; /* built-in names */
-  --nv: #9cdcfe; /* variables, parameters */
-  --no: #d4d4d4; /* object properties */
-  --na: #9cdcfe; /* attributes */
-  --nt: #569cd6; /* tags (HTML/XML) */
-  --nd: #dcdcaa; /* decorators */
-  --np: #9cdcfe; /* property names */
-  --s: #ce9178;  /* strings */
-  --m: #b5cea8;  /* numbers */
-  --o: #d4d4d4;  /* operators */
-  --p: #d4d4d4;  /* punctuation */
-  --c: #6a9955;  /* comments */
-  --cp: #c586c0; /* preprocessor, import/export */
-  --err: #f44747; /* errors */
+  /* === SYNTAX — matching VS Code Dark+ exactly === */
 
-  /* diffs and status */
+  /* keywords: if, else, return, const, let, var, function, class, import, export */
+  --k: #569cd6;
+
+  /* types: String, int, boolean, custom class/interface names in annotations */
+  --kt: #4ec9b0;
+
+  /* function/method names when called: doSomething(), render() */
+  --nf: #dcdcaa;
+
+  /* class/type names when declared or referenced */
+  --nc: #4ec9b0;
+
+  /* built-in names: console, Math, Object, Array */
+  --nb: #4fc1ff;
+
+  /* variables and parameters: myVar, event, args */
+  --nv: #9cdcfe;
+
+  /* constants and enum members */
+  --no: #4fc1ff;
+
+  /* attributes: HTML attributes, decorators */
+  --na: #9cdcfe;
+
+  /* HTML/XML tags */
+  --nt: #569cd6;
+
+  /* decorators: @Override, @Component */
+  --nd: #dcdcaa;
+
+  /* properties: obj.property */
+  --np: #9cdcfe;
+
+  /* strings: "hello", 'world', `template` */
+  --s: #ce9178;
+
+  /* numbers: 42, 3.14, 0xff */
+  --m: #b5cea8;
+
+  /* operators: +, -, =, =>, !== */
+  --o: #d4d4d4;
+
+  /* punctuation: (), {}, [], ; */
+  --p: #d4d4d4;
+
+  /* comments: // single line, /* multi line */ */
+  --c: #6a9955;
+
+  /* control flow keywords / preprocessor: import, from, require, #include */
+  --cp: #c586c0;
+
+  /* errors */
+  --err: #f44747;
+
+  /* diffs */
   --gi: #b5cea8; --gd: #f44747;
   --gi-bg: rgba(181, 206, 168, 0.15); --gd-bg: rgba(244, 71, 71, 0.15);
 }
