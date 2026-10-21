@@ -1,5 +1,4 @@
 /* VS Code Dark+: Faithful recreation of Visual Studio Code's default dark theme.
-   Colorful syntax with distinct hues for every token type.
    Token reference: docs/internals/styling-and-themes.md. */
 :root[data-theme="vscode-dark"] {
   --theme-name: "VS Code Dark+";
@@ -16,57 +15,55 @@
   /* elevation */
   --shadow: 0 4px 16px rgba(0, 0, 0, 0.7);
 
-  /* === SYNTAX — matching VS Code Dark+ exactly === */
+  /* keywords: if, else, return, const, let, var, fn, pub, use, impl */
+  --k: #c586c0;
 
-  /* keywords: if, else, return, const, let, var, function, class, import, export */
-  --k: #569cd6;
-
-  /* types: String, int, boolean, custom class/interface names in annotations */
+  /* types: String, i32, bool, Vec, custom struct/class names */
   --kt: #4ec9b0;
 
-  /* function/method names when called: doSomething(), render() */
+  /* function/method names: do_something(), render(), main() */
   --nf: #dcdcaa;
 
-  /* class/type names when declared or referenced */
+  /* class/struct names: MyStruct, Component */
   --nc: #4ec9b0;
 
-  /* built-in names: console, Math, Object, Array */
+  /* built-in names/modules: std, console, self, super */
   --nb: #4fc1ff;
 
-  /* variables and parameters: myVar, event, args */
+  /* variables and parameters */
   --nv: #9cdcfe;
 
   /* constants and enum members */
   --no: #4fc1ff;
 
-  /* attributes: HTML attributes, decorators */
+  /* attributes: #[derive], @Component */
   --na: #9cdcfe;
 
   /* HTML/XML tags */
   --nt: #569cd6;
 
-  /* decorators: @Override, @Component */
+  /* decorators */
   --nd: #dcdcaa;
 
-  /* properties: obj.property */
+  /* properties */
   --np: #9cdcfe;
 
-  /* strings: "hello", 'world', `template` */
+  /* strings: "hello", 'world' */
   --s: #ce9178;
 
   /* numbers: 42, 3.14, 0xff */
   --m: #b5cea8;
 
-  /* operators: +, -, =, =>, !== */
+  /* operators: +, -, =, =>, ::, &, | — slightly tinted, not plain white */
   --o: #d4d4d4;
 
-  /* punctuation: (), {}, [], ; */
-  --p: #d4d4d4;
+  /* punctuation: (), {}, [], ;, , — subtle gray to not dominate */
+  --p: #a9a9a9;
 
-  /* comments: // single line, /* multi line */ */
+  /* comments */
   --c: #6a9955;
 
-  /* control flow keywords / preprocessor: import, from, require, #include */
+  /* control flow / preprocessor: use, import, from, mod, crate, pub(crate) */
   --cp: #c586c0;
 
   /* errors */
